@@ -1,0 +1,80 @@
+﻿@model Booking
+<div class="booking">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="booking-content">
+                    <div class="section-header">
+                        <p>Bir Masa Ayırın</p>
+                        <h2>Özel anlarınız için hemen rezervasyon yapın!</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>
+                            @ViewBag.P1
+                        </p>
+                        <p>
+                           @ViewBag.P2
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="booking-form">
+                    <form method="post" asp-action="CreateBooking" asp-controller="Default">
+                        <div class="control-group">
+                            <div class="input-group">
+                                <input type="text" asp-for="Name" class="form-control" placeholder="Adınız Soyadınız" required="required" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text"><i class="far fa-user"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="input-group">
+                                <input type="email" asp-for="Email" class="form-control" placeholder="Email Adresiniz" required="required" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text"><i class="far fa-envelope"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="input-group">
+                                <input type="text" asp-for="Phone" class="form-control" placeholder="Telefon Numaranız" required="required" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text"><i class="fa fa-mobile-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="input-group date" id="date" data-target-input="nearest">
+                                <input type="text" asp-for="BookingDate" class="form-control datetimepicker-input" placeholder="Tarih Seçin" data-target="#date" data-toggle="datetimepicker" />
+                                <div class="input-group-append" data-target="#date" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="input-group time" id="time" data-target-input="nearest">
+                                <input type="text" asp-for="BookingTime" class="form-control datetimepicker-input" placeholder="Saat Seçin" data-target="#time" data-toggle="datetimepicker" />
+                                <div class="input-group-append" data-target="#time" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="input-group">
+                                <input type="number" asp-for="GuestCount" class="form-control" placeholder="Kişi Sayısı " required="required" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text"><i class="fa fa-chevron-down"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn custom-btn" type="submit">Rezervasyon Yap</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

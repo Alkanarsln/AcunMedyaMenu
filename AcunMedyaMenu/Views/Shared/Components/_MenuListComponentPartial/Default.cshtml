@@ -1,0 +1,35 @@
+﻿@model List<AcunMedyaMenu.Entities.Product>
+<div class="menu">
+    <div class="container">
+        <div class="section-header text-center">
+            <p>Acunmedya Akademi Menü</p>
+            <h2>Lezzetli Şef Yemekleri  </h2>
+        </div>               
+            <div class="tab-content">
+                <div id="burgers" class="container tab-pane active">
+                    <div class="row">
+                       
+                        <div class="col-lg-7 col-md-12">
+                        @foreach (var item in Model)
+                        {
+                            <div class="menu-item">
+                                <div class="menu-img">
+                                    <img src="@item.ImageUrl" alt="Image">
+                                </div>
+                                <div class="menu-text">
+                                    <h3><span>@item.ProductName</span> <strong>₺ @item.Price</strong></h3>
+                                    <p>@item.Description</p>
+                                </div>
+                            </div>
+                        } 
+                    </div>
+                    
+                        
+                        <div class="col-lg-5 d-none d-lg-block">
+                            <img src="~/food-website-template/img/menu-burger-img.jpg" alt="Image">
+                        </div>
+                    </div>
+                </div>           
+            </div>
+    </div>
+</div>
