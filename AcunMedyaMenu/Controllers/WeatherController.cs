@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AcunMedyaMenu.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace AcunMedyaMenu.Controllers
 {
     public class WeatherController : Controller
     {
+
         public async Task<IActionResult> Index()
         {
 
@@ -22,9 +25,10 @@ namespace AcunMedyaMenu.Controllers
             {
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(body);
-            }
-            return View();
+                var values  = JsonConvert.DeserializeObject<WeatherViewModel>(body);
+				return View(values.data);
+			}
+         
         }
     }
 }
