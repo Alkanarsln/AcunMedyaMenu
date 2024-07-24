@@ -12,7 +12,7 @@
     @await Html.PartialAsync("PartialNavbar")
     <!-- Nav Bar End -->
     <!-- Carousel Start -->
-    @await Html.PartialAsync("PartialCarousel")
+    @await Component.InvokeAsync("_SliderListComponentPartial")
     <!-- Carousel End -->
     <!-- Booking Start -->
     @await Html.PartialAsync("CreateBooking")

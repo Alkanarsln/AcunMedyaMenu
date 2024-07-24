@@ -25,11 +25,6 @@ namespace AcunMedyaMenu.Controllers
             return PartialView();
         }
 
-        public PartialViewResult PartialCarousel()
-        {
-            return PartialView();
-        }
-
         public PartialViewResult PartialScript()
         {
             return PartialView();
