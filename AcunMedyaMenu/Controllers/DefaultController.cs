@@ -39,11 +39,6 @@ namespace AcunMedyaMenu.Controllers
         {
             return PartialView();
         }
-
-        public PartialViewResult PartialTestimonial()
-        {
-            return PartialView();
-        }
         public PartialViewResult PartialFeature()
         {
             return PartialView();
@@ -68,5 +63,6 @@ namespace AcunMedyaMenu.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }

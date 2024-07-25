@@ -1,0 +1,20 @@
+﻿@model List<Testimonial>
+<div class="testimonial">
+    <div class="container">
+        <div class="owl-carousel testimonials-carousel">
+            @foreach (var item in Model)
+            {
+                <div class="testimonial-item">
+                    <div class="testimonial-img">
+                        <img src="@item.ImageUrl" alt="Image">
+                    </div>
+                    <p>
+                       @item.Description
+                    </p>
+                    <h2>@item.NameSurname</h2>
+                    <h3>@item.Title</h3>
+                </div>
+            }  
+        </div>
+    </div>
+</div>

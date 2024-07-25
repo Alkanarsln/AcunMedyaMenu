@@ -4,6 +4,7 @@ using AcunMedyaMenu.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AcunMedyaMenu.Migrations
 {
     [DbContext(typeof(MenuContext))]
-    partial class MenuContextModelSnapshot : ModelSnapshot
+    [Migration("20240725104518_add_category_tables")]
+    partial class add_category_tables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,6 +151,9 @@ namespace AcunMedyaMenu.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"), 1L, 1);
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -168,6 +173,8 @@ namespace AcunMedyaMenu.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("ProductID");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -201,33 +208,15 @@ namespace AcunMedyaMenu.Migrations
                     b.ToTable("Sliders");
                 });
 
-            modelBuilder.Entity("AcunMedyaMenu.Entities.Testimonial", b =>
+            modelBuilder.Entity("AcunMedyaMenu.Entities.Product", b =>
                 {
-                    b.Property<int>("TestimonialID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasOne("AcunMedyaMenu.Entities.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TestimonialID"), 1L, 1);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameSurname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TestimonialID");
-
-                    b.ToTable("Testimonials");
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

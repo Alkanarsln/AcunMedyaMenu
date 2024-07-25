@@ -14,6 +14,8 @@ namespace AcunMedyaMenu.Context
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Testimonial> Testimonials { get; set; }
     }
 }
 
